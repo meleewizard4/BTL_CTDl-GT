@@ -14,7 +14,7 @@ private:
 
 public:
     SinhVien() {}
-    // Hàm nhap thông tin sinh viên
+    // Hàm nhập thông tin sinh viên
     friend istream& operator>>(istream& is, SinhVien& sv) {
         cout << "Nhap ma sinh vien: ";
         is >> sv.maSV;
@@ -28,36 +28,36 @@ public:
         return is;
     }
 
-    // Hàm xuat thông tin sinh viên
+    // Hàm xuất thông tin sinh viên
     friend ostream& operator<<(ostream& os, const SinhVien& sv) {
         os << "Ma SV: " << sv.maSV << ", Ten: " << sv.tenSV 
            << ", Tuoi: " << sv.tuoi << ", Diem: " << sv.diem;
         return os;
     }
 
-    // Toán tu so sánh < theo diem
+    // Toán tử so sánh < theo điểm
     bool operator<(const SinhVien& sv) const {
         return this->diem < sv.diem;
     }
 
-    // Lay mã sinh viên
+    // Lấy mã sinh viên
     string getMaSV() const {
         return maSV;
     }
 
-    // Lay diem sinh viên
+    // Lấy diem sinh viên
     float getDiem() const {
         return diem;
     }
 };
 
-// Lap DanhSachSinhVien quan lý danh sách sinh viên
+// Lập DanhSachSinhVien quản lý danh sách sinh viên
 class DanhSachSinhVien {
 private:
-    vector<SinhVien> ds;  // Dùng vector de luu danh sách sinh viên
+    vector<SinhVien> ds;  // Dùng vector để lưu danh sách sinh viên
 
 public:
-    // Hàm nhap danh sách sinh viên
+    // Hàm nhập danh sách sinh viên
     void nhapDS(int n) {
         for (int i = 0; i < n; ++i) {
             SinhVien sv;
@@ -67,24 +67,24 @@ public:
         }
     }
 
-    // Hàm xuat danh sách sinh viên
+    // Hàm xuất danh sách sinh viên
     void xuatDS() const {
         for (const auto& sv : ds) {
             cout << sv << endl;
         }
     }
 
-    // Sap xep danh sách theo diem
+    // Sắp xếp danh sách theo điểm
     void sapXepTheoDiem() {
         sort(ds.begin(), ds.end());
     }
 
-    // Tìm sinh viên có diem cao nhat
+    // Tìm sinh viên có điểm cao nhất
     SinhVien timMaxDiem() const {
         return *max_element(ds.begin(), ds.end());
     }
 
-    // Tìm sinh viên có diem thap nhat
+    // Tìm sinh viên có điểm thấp nhất
     SinhVien timMinDiem() const {
         return *min_element(ds.begin(), ds.end());
     }
@@ -112,7 +112,7 @@ public:
         }
     }
 };
-// Lap App de quan lý menu và thao tác
+// Lập App de quản lý menu và thao tác
 class App {
 public:
     void run() {
