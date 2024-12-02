@@ -7,7 +7,7 @@ using namespace std;
 // Lớp SoLon
 class SoLon {
 private:
-    vector<int> digits;  // S? d?ng vector ð? lýu tr? các ch? s?
+    vector<int> digits;  // Sử dụng vector để lưu trữ các chữ số
 
 public:
     // Hàm khởi tạo số lớn từ chuỗi
@@ -40,7 +40,7 @@ public:
             result.push_back(carry % 10);
             carry /= 10;
         }
-        reverse(result.begin(), result.end());  // Ð?o ngý?c k?t qu?
+        reverse(result.begin(), result.end());  // Đảo ngược kết quả
         SoLon resultSoLon("");
         resultSoLon.digits = result;
         return resultSoLon;
