@@ -4,22 +4,22 @@
 #include <algorithm>
 using namespace std;
 
-// L?p SoLon (S? L?n)
+// Lớp SoLon
 class SoLon {
 private:
-    vector<int> digits;  // S? d?ng vector �? l�u tr? c�c ch? s?
+    vector<int> digits;  // S? d?ng vector ð? lýu tr? các ch? s?
 
 public:
-    // H�m kh?i t?o s? l?n t? chu?i
+    // Hàm khởi tạo số lớn từ chuỗi
     SoLon(string s) {
         for (char c : s) {
             if (isdigit(c)) {
-                digits.push_back(c - '0');  // Chuy?n k? t? th�nh ch? s?
+                digits.push_back(c - '0');  // Chuyển ký tự thành chữ số
             }
         }
     }
 
-    // In s? l?n ra m�n h?nh
+    // In số lớn ra màn hình
     void print() const {
         for (int digit : digits) {
             cout << digit;
@@ -27,7 +27,7 @@ public:
         cout << endl;
     }
 
-    // Nh�n m?t s? l?n v?i m?t s? nguy�n
+    // Nhân một số lớn với một số nguyên
     SoLon operator*(int n) const {
         vector<int> result;
         int carry = 0;
@@ -40,13 +40,13 @@ public:
             result.push_back(carry % 10);
             carry /= 10;
         }
-        reverse(result.begin(), result.end());  // �?o ng�?c k?t qu?
+        reverse(result.begin(), result.end());  // Ð?o ngý?c k?t qu?
         SoLon resultSoLon("");
         resultSoLon.digits = result;
         return resultSoLon;
     }
 
-    // Nh�n hai s? l?n
+    // Nhân hai số lớn
     SoLon operator*(const SoLon& other) const {
         SoLon result("0");
         vector<int> tempResult(digits.size() + other.digits.size(), 0);
@@ -60,7 +60,7 @@ public:
             }
         }
 
-        // T?o SoLon t? vector k?t qu?
+       // Tạo SoLon từ vector kết quả
         int startIndex = 0;
         while (startIndex < tempResult.size() && tempResult[startIndex] == 0) {
             ++startIndex;
@@ -73,7 +73,7 @@ public:
         return result;
     }
 
-    // C?ng hai s? l?n
+    // Cộng hai số lớn
     SoLon operator+(const SoLon& other) const {
         vector<int> result;
         int carry = 0;
@@ -90,13 +90,13 @@ public:
             result.push_back(sum % 10);
             carry = sum / 10;
         }
-        reverse(result.begin(), result.end());  // �?o ng�?c k?t qu?
+        reverse(result.begin(), result.end());  // Đảo ngược kết quả
         SoLon sumResult("");
         sumResult.digits = result;
         return sumResult;
     }
 
-    // Tr? hai s? l?n
+    // Trừ hai số lớn
     SoLon operator-(const SoLon& other) const {
         vector<int> result;
         int borrow = 0;
@@ -121,21 +121,21 @@ public:
             result.push_back(diff);
         }
 
-        // Lo?i b? c�c s? 0 th?a ? �?u
+        // Loại bỏ các số 0 thừa ở đầu
         int startIndex = result.size() - 1;
         while (startIndex > 0 && result[startIndex] == 0) {
             --startIndex;
         }
 
         result.resize(startIndex + 1);
-        reverse(result.begin(), result.end());  // �?o ng�?c k?t qu?
+        reverse(result.begin(), result.end());  // Đảo ngược kết quả
         SoLon diffResult("");
         diffResult.digits = result;
         return diffResult;
     }
 };
 
-// T�nh s? Fibonacci th? n
+// Tính số Fibonacci thứ n
 SoLon fibonacci(int n) {
     SoLon a("0");
     SoLon b("1");
@@ -149,7 +149,7 @@ SoLon fibonacci(int n) {
     return b;
 }
 
-// T�nh giai th?a c?a s? n
+// Tính giai thừa của số n
 SoLon factorial(int n) {
     SoLon result("1");
     for (int i = 2; i <= n; ++i) {
@@ -163,11 +163,11 @@ int main() {
     cout << "Nhap n (1 <= n <= 1000): ";
     cin >> n;
 
-    // T�nh s? Fibonacci th? n
+    // Tính số Fibonacci thứ n
     cout << "So Fibonacci thu " << n << " la: ";
     fibonacci(n).print();
 
-    // T�nh giai th?a c?a n
+    // Tính giai thừa của n
     cout << "Giai thua cua " << n << " la: ";
     factorial(n).print();
 
