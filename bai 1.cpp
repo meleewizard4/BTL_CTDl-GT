@@ -54,65 +54,7 @@ public:
 // Lập DanhSachSinhVien quản lý danh sách sinh viên
 class DanhSachSinhVien {
 private:
-    vector<SinhVien> ds;  // Dùng vector để lưu danh sách sinh viên
-
-public:
-    // Hàm nhập danh sách sinh viên
-    void nhapDS(int n) {
-        for (int i = 0; i < n; ++i) {
-            SinhVien sv;
-            cout << "Nhap thong tin sinh vien thu " << i + 1 << ":" << endl;
-            cin >> sv;
-            ds.push_back(sv);
-        }
-    }
-
-    // Hàm xuất danh sách sinh viên
-    void xuatDS() const {
-        for (const auto& sv : ds) {
-            cout << sv << endl;
-        }
-    }
-
-    // Sắp xếp danh sách theo điểm
-    void sapXepTheoDiem() {
-        sort(ds.begin(), ds.end());
-    }
-
-    // Tìm sinh viên có điểm cao nhất
-    SinhVien timMaxDiem() const {
-        return *max_element(ds.begin(), ds.end());
-    }
-
-    // Tìm sinh viên có điểm thấp nhất
-    SinhVien timMinDiem() const {
-        return *min_element(ds.begin(), ds.end());
-    }
-
-    // Tìm sinh viên theo mã sinh viên
-    SinhVien* timKiemTheoMa(const string& ma) {
-        for (auto& sv : ds) {
-            if (sv.getMaSV() == ma) {
-                return &sv;
-            }
-        }
-        return nullptr;  // Tra ve null neu không tìm th?y
-    }
-
-    // Xóa sinh viên theo mã
-    void xoaTheoMa(const string& ma) {
-        auto it = remove_if(ds.begin(), ds.end(), [&](const SinhVien& sv) {
-            return sv.getMaSV() == ma;
-        });
-        if (it != ds.end()) {
-            ds.erase(it, ds.end());
-            cout << "Da xoa sinh vien co ma " << ma << endl;
-        } else {
-            cout << "Khong tim thay sinh vien co ma " << ma << endl;
-        }
-    }
-};
-// Lập App de quản lý menu và thao tác
+    vector<SinhVien>để quản lý menu và thao tác
 class App {
 public:
     void run() {
