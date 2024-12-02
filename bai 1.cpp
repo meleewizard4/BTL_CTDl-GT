@@ -131,6 +131,7 @@ public:
             cout << "0. Thoat" << endl;
             cout << "Nhap lua chon: ";
             cin >> choice;
+            cout << endl;
 
             switch (choice) {
             case 1: {
